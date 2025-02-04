@@ -1,0 +1,83 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+<div *ngIf="company && company.name" class="company-card">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="logo">
+        <a [href]="company.photo" target="_blank">
+          <button mat-icon-button>
+            <mat-icon>photo</mat-icon>
+          </button>
+        </a>
+      </div>
+      <mat-card-title>{{ company.name }}</mat-card-title>
+      <mat-card-subtitle>RUT: {{ company.rut }}</mat-card-subtitle>
+      <mat-card-subtitle class="model-validator">Model Validator: {{ company.modelValidator || 'none' }} 
+        <button mat-icon-button (click)="openUpdateModelValidatorDialog()">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>
+
+<div class="table-container">
+  <h2 class="title">Company Devices</h2>
+  <table mat-table [dataSource]="tableData" class="mat-elevation-z3 rounded-table">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell"> Name </th>
+      <td mat-cell *matCellDef="let element" class="custom-cell"> {{ element.name }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="model">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell"> Model </th>
+      <td mat-cell *matCellDef="let element" class="custom-cell"> {{ element.model }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell"> Description </th>
+      <td mat-cell *matCellDef="let element" class="custom-cell"> {{ element.description }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mainPhoto">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell transparent-header">Main Photo</th>
+      <td mat-cell *matCellDef="let device">
+        <a [href]="device.mainPhoto" target="_blank">
+          <button mat-icon-button>
+            <mat-icon>photo</mat-icon>
+          </button>
+        </a>
+      </td>
+    </ng-container>    
+
+    <ng-container matColumnDef="photos">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell centered"> Photos </th>
+      <td mat-cell *matCellDef="let device" class="custom-cell centered">
+        <button mat-button (click)="openViewPhotosDialog(device)">See All Photos</button>
+      </td>
+    </ng-container>    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <tr *matNoDataRow>
+      <td colspan="5" class="no-data-message">No data available in table</td>
+    </tr>
+
+  </table>
+  
+  <div *ngIf="tableData && tableData.length > 0" class="paginator-container">
+    <app-paginator
+          [currentPage]="currentPage"
+          [totalPages]="totalPages"
+          [totalResults]="totalResults"
+          [resultsPerPage]="resultsPerPage"
+          (pageChange)="onPageChange($event)">
+        </app-paginator>
+  </div>
+</div>
+
+<button *ngIf="isDataLoaded" class="primary-button new-device-button" mat-raised-button (click)="openCreateDeviceDialog()">New Device</button>
+
+<router-outlet></router-outlet>

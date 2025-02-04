@@ -1,0 +1,18 @@
+<div class="paginator">
+<button 
+  class="paginator-button" 
+  (click)="previousPage()" 
+  [disabled]="disablePrevious()">
+  ‹
+</button>
+
+<span *ngIf="showResultsInfo" class="paginator-results">
+  {{getResultsInfo()}}
+</span>
+
+<button 
+  class="paginator-button" 
+  (click)="nextPage()" 
+  [disabled]="disableNext()">
+    ›
+</button>

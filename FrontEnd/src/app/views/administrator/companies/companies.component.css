@@ -1,0 +1,42 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #ceced264;
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 95%; 
+}
+
+.title {
+    align-self: flex-start;
+    padding-left: 10px;
+}
+
+.rounded-table {
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.paginator-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 0;
+  }
+  
+  .title-filter-container {
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }

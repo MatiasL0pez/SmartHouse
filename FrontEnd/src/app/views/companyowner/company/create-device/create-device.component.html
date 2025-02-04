@@ -1,0 +1,53 @@
+<div>
+  <mat-card>
+    <mat-toolbar color="primary">Add Device</mat-toolbar>
+    <form [formGroup]="form" (ngSubmit)="addDevice()">
+      <mat-form-field>
+        <mat-label>Device Name</mat-label>
+        <input matInput type="text" formControlName="name" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Model Number</mat-label>
+        <input matInput type="text" formControlName="modelNumber" required>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput type="text" formControlName="description" required>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>Device Type</mat-label>
+        <mat-select formControlName="deviceType" (selectionChange)="onDeviceTypeChange($event.value)">
+          <mat-option *ngFor="let type of deviceTypes" [value]="type">{{ type }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div *ngIf="form.get('deviceType')?.value === 'Camera'" class="checkbox-group">
+        <mat-checkbox formControlName="indoorUse">Indoor Use</mat-checkbox>
+        <mat-checkbox formControlName="outdoorUse">Outdoor Use</mat-checkbox>
+        <mat-checkbox formControlName="supportsMotionDetection">Motion Detection</mat-checkbox>
+        <mat-checkbox formControlName="supportsPersonDetection">Person Detection</mat-checkbox>
+      </div>
+      
+      <mat-form-field>
+        <mat-label>Main Photo URL or Filename</mat-label>
+        <input matInput type="text" formControlName="mainPhoto" required>
+      </mat-form-field>
+
+      <div *ngFor="let photoControl of photoControls; let i = index">
+        <mat-form-field>
+          <mat-label>Additional Photo {{i + 1}} URL or Filename</mat-label>
+          <input matInput type="text" [formControl]="photoControl">
+        </mat-form-field>
+      </div>
+
+      <button mat-button type="button" (click)="addPhotoField()" class="add-photo-button">Add Photo</button>
+
+      <div class="button">
+        <button type="submit" mat-raised-button class="primary-button">Add</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

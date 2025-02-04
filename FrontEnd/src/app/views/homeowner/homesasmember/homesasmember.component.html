@@ -1,0 +1,199 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+<mat-card *ngIf="homes && homes.length === 0" class="not-member-card">
+  <mat-card-header>
+    <mat-card-title>You are not a member of any home</mat-card-title>
+  </mat-card-header>
+</mat-card>
+
+<div class="home-list-container" *ngIf="homes && homes.length > 0">
+  <h2>Homes</h2>
+  <div class="home-card-wrapper">
+    <div class="home-header"></div>
+    <div *ngIf="!showHomeList" (click)="toggleHomeList()" class="home-card">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            {{ selectedHome?.alias }}
+          </mat-card-title>
+          <mat-card-subtitle>
+            Street: {{ selectedHome?.street }} {{ selectedHome?.number }}
+          </mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+
+    <div *ngIf="showHomeList" class="home-list">
+      <div
+        *ngFor="let home of homes"
+        (click)="selectHome(home)"
+        class="home-card-list"
+      >
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ home.alias }}</mat-card-title>
+            <mat-card-subtitle
+              >Street: {{ home.street }} {{ home.number }}</mat-card-subtitle
+            >
+          </mat-card-header>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="table-container" *ngIf="isDevicesDataLoaded">
+  <div class="devices-header">
+    <h2 class="title">Home Devices</h2>
+    <button
+      *ngIf="isDevicesDataLoaded"
+      class="primary-button add-device-button"
+      mat-raised-button
+      (click)="openAddDeviceDialog()"
+    >
+      Add Device
+    </button>
+  </div>
+  <table
+    mat-table
+    [dataSource]="devicesTableData"
+    class="mat-elevation-z3 rounded-table"
+  >
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">Name</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.name }}
+        <button mat-button color="primary" (click)="changeName(element)">
+          Change Name
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deviceName">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">
+        Device Name
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.nameDevice }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="model">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">
+        Model
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.model }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="mainPhoto">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">
+        Main Photo
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <img [src]="element.mainPhoto" alt="Photo" class="device-photo" />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="isOnline">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">
+        Status
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button (click)="toggleDeviceOnlineStatus(element)">
+          {{ element.isOnline ? "Online" : "Offline" }}
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="roomName">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">
+        Room Name
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.roomName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">
+        Device Status
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          *ngIf="
+            element.status === 'On' ||
+            element.status === 'Off' ||
+            element.status === 'Open' ||
+            element.status === 'Closed'
+          "
+          mat-button
+          color="primary"
+          (click)="toggleDeviceStatus(element)"
+        >
+          {{ element.status }}
+        </button>
+        <span
+          *ngIf="
+            element.status !== 'On' &&
+            element.status !== 'Off' &&
+            element.status !== 'Open' &&
+            element.status !== 'Closed'
+          "
+        >
+          {{ element.status }}
+        </span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedDevicesColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedDevicesColumns"></tr>
+
+    <tr *matNoDataRow>
+      <td colspan="8" class="no-data-message">No data available in table</td>
+    </tr>
+  </table>
+</div>
+
+<div class="table-container" *ngIf="isDevicesDataLoaded">
+  <div class="rooms-header">
+    <h2 class="title">Rooms</h2>
+  </div>
+  <table
+    mat-table
+    [dataSource]="roomsTableData"
+    class="mat-elevation-z3 rounded-table"
+  >
+    <ng-container matColumnDef="roomName">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">
+        Room Name
+      </th>
+      <td mat-cell *matCellDef="let room">{{ room.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="homeDevicesNames">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell">
+        Devices on room
+      </th>
+      <td mat-cell *matCellDef="let room">{{ room.homeDevicesNames }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="addDevice">
+      <th mat-header-cell *matHeaderCellDef class="custom-header-cell"></th>
+      <td mat-cell *matCellDef="let room" class="add-button-cell">
+        <button
+          mat-button
+          type="button"
+          class="login-button"
+          (click)="openAddHomeDeviceToRoomDialog(room.roomId)"
+        >
+          Add Device to Room
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedRoomsColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedRoomsColumns"></tr>
+
+    <tr *matNoDataRow>
+      <td colspan="8" class="no-data-message">No data available in table</td>
+    </tr>
+  </table>
+</div>
+
+<router-outlet></router-outlet>

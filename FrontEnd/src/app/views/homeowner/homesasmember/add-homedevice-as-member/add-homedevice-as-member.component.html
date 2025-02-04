@@ -1,0 +1,111 @@
+<br />
+<h2>Select a Device to Add to Home</h2>
+<div>
+  <div>
+    <mat-form-field>
+      <mat-label>Home device name</mat-label>
+      <input matInput [(ngModel)]="deviceName" />
+    </mat-form-field>
+  </div>
+
+  <table
+    mat-table
+    [dataSource]="devices"
+    class="mat-elevation-z3 rounded-table"
+  >
+    <ng-container matColumnDef="name">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="custom-header-cell transparent-header"
+      >
+        Device Name
+      </th>
+      <td mat-cell *matCellDef="let device">{{ device.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="companyName">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="custom-header-cell transparent-header"
+      >
+        Company Name
+      </th>
+      <td mat-cell *matCellDef="let device">{{ device.companyName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="model">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="custom-header-cell transparent-header centered"
+      >
+        Model
+      </th>
+      <td mat-cell *matCellDef="let device">{{ device.model }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="mainPhoto">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="custom-header-cell transparent-header centered"
+      >
+        Main Photo
+      </th>
+      <td mat-cell *matCellDef="let device">
+        <a [href]="device.mainPhoto" target="_blank">
+          <button mat-icon-button>
+            <mat-icon>photo</mat-icon>
+          </button>
+        </a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="select">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="custom-header-cell transparent-header centered"
+      >
+        Select
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let device"
+        [class.selected]="device.deviceId === selectedDeviceId"
+      >
+        <button mat-button (click)="selectDevice(device.deviceId)">
+          {{ device.deviceId === selectedDeviceId ? "Selected" : "Select" }}
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      [class.selected]="row.deviceId === selectedDeviceId"
+    ></tr>
+  </table>
+
+  <div class="paginator-container">
+    <app-paginator
+      [showResultsInfo]="false"
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      [totalResults]="totalResults"
+      [resultsPerPage]="resultsPerPage"
+      (pageChange)="onPageChange($event)"
+    >
+    </app-paginator>
+  </div>
+</div>
+
+<div class="actions">
+  <button mat-button class="secondary-button" (click)="cancel()">Cancel</button>
+  <button mat-button class="primary-button" (click)="addDevice()">
+    Add Device
+  </button>
+</div>

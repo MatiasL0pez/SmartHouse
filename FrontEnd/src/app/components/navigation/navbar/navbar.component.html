@@ -1,0 +1,12 @@
+<mat-toolbar class="custom-toolbar">
+  <mat-icon class="icon-spacing" fontIcon="home"></mat-icon>
+  <a>SmartHouse</a>
+  <div class="spacer"></div>
+  <a mat-button *ngFor="let option of options" (click)="navigate(option.path)">{{option.name}}</a>
+  <span class="spacer2"></span>
+  <div class="user-container">
+    <img *ngIf="userPhoto" [src]="userPhoto" class="user-photo" (error)="userPhoto = null" />
+    <mat-icon *ngIf="!userPhoto">account_circle</mat-icon>
+    <button *ngIf="!logInPage" mat-button (click)="onLogout()">Logout</button>
+  </div>
+</mat-toolbar>

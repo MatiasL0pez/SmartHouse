@@ -1,0 +1,21 @@
+<div>
+    <mat-card>
+      <mat-toolbar color="primary">Model Validator</mat-toolbar>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <mat-form-field>
+          <mat-label>Model Validator</mat-label>
+          <mat-select formControlName="modelValidator">
+            <mat-option value="">None</mat-option>
+            <mat-option *ngFor="let modelValidator of modelValidators" [value]="modelValidator">
+              {{ modelValidator }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <div class="button">
+          <button type="submit" mat-button class="primary-button">Accept</button>
+        </div>
+      </form>
+    </mat-card>
+</div>
+  

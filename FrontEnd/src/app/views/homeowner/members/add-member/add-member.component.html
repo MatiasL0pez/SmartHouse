@@ -1,0 +1,16 @@
+<div>
+  <mat-card>
+    <mat-toolbar color="primary">Add Member</mat-toolbar>
+    <form [formGroup]="form" (ngSubmit)="addHomeUser()">
+      <mat-form-field>
+        <mat-label>Member Email</mat-label>
+        <input matInput type="text" formControlName="email" required />
+      </mat-form-field>
+      <div class="button">
+        <button type="submit" mat-raised-button class="primary-button">
+          Add
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

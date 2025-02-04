@@ -1,0 +1,15 @@
+<div class="filter-container">
+    <mat-form-field class="filter-input" appearance="outline">
+      <mat-label>Filter</mat-label>
+      <input matInput placeholder="Type to search..." [(ngModel)]="filterText" />
+      <div matSuffix class="button-container">
+        <button mat-icon-button (click)="clearFilter()">
+          <mat-icon>close</mat-icon>
+        </button>
+        <button mat-icon-button (click)="applyFilter()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+    </mat-form-field>
+  </div>
+  

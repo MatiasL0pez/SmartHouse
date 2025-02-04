@@ -1,0 +1,22 @@
+{
+  "dispositivos": [
+    {
+      "id": "69508433-1569-47a4-9591-447c3c4bdcbd",
+      "tipo": "smart camera",
+      "nombre": "Business G235",
+      "modelo": "G235",
+      "fotos": [
+        {
+          "path": "https://http2.mlstatic.com/D_NQ_NP_2X_787853-MLU71131483530_082023-F.webp",
+          "es_principal": false
+        },
+        {
+          "path": "https://http2.mlstatic.com/D_NQ_NP_2X_603102-MLU71171145159_082023-F.webp",
+          "es_principal": true
+        }
+      ],
+      "person_detection": false,
+      "movement_detection": true
+    }
+  ]
+}

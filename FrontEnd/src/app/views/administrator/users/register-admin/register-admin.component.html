@@ -1,0 +1,38 @@
+<div class="register-admin">
+  <mat-card>
+    <mat-toolbar color="primary">Register</mat-toolbar>
+    <form [formGroup]="form" (ngSubmit)="register()">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Surname</mat-label>
+        <input matInput type="text" formControlName="surname">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Select Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option value="companyOwner">Company Owner</mat-option>
+          <mat-option value="administrator">Administrator</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="button-group">
+        <button type="submit" mat-button>Register</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

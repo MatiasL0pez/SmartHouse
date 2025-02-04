@@ -1,0 +1,38 @@
+.file-label {
+    display: block;
+    padding: 15px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.6);
+    background-color: #e0e2ec;
+    width: 100%;
+    border-bottom: 1px solid rgb(26, 27, 31);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 35px;
+    cursor: pointer;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-label:hover {
+    background-color: #d6d6d6;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+.primary-button{
+    padding: 7px 10px;
+    font-size: 14px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+  }

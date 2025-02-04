@@ -1,0 +1,35 @@
+<div>
+    <mat-card>
+        <mat-toolbar color="primary">Company</mat-toolbar>
+        <form [formGroup]="form" (ngSubmit)="associate()">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput type="text" formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>RUT</mat-label>
+                <input matInput type="text" formControlName="rut">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Model Validator</mat-label>
+                <mat-select formControlName="modelValidator">
+                    <mat-option *ngFor="let modelValidator of modelValidators" [value]="modelValidator">
+                        {{ modelValidator }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Profile Photo</mat-label>
+                <input matInput type="text" formControlName="profilePhoto" />
+              </mat-form-field>
+
+            <div class="button">
+                <button mat-button class="secondary-button" (click)="cancel()">Cancel</button>
+                <button type="submit" mat-button class="primary-button add">Associate</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

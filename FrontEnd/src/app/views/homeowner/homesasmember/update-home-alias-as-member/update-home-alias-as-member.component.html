@@ -1,0 +1,17 @@
+<div>
+  <mat-card>
+    <mat-toolbar color="primary">Home</mat-toolbar>
+    <form [formGroup]="form" (ngSubmit)="updateAlias()">
+      <mat-form-field>
+        <mat-label>Alias</mat-label>
+        <input matInput type="text" formControlName="alias" />
+      </mat-form-field>
+
+      <div class="button">
+        <button type="submit" mat-button class="primary-button add">
+          Update
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,30 @@
+.paginator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    gap: 15px;
+  }
+  
+  .paginator-button {
+    font-size: 2rem;
+    background-color: transparent;
+    color: #134074;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .paginator-button:disabled {
+    color: #d0d0d0;
+    cursor: not-allowed;
+  }
+  
+  .paginator-results {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #3b3a3a;
+    position: relative;
+    top: 3px;
+  }
+  

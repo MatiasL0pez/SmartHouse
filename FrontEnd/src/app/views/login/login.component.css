@@ -1,0 +1,83 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #acacad64;
+  overflow: hidden;
+}
+
+.login-container {
+  display: flex;
+  max-width: 95%;
+  width: 90%;
+  height: 100%;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.left-section {
+  flex: 1;
+  background-color: transparent;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.left-section h1 {
+  font-size: 48px;
+  margin-left: 15%;
+  color: #ffffff;
+}
+
+.left-section p {
+  font-size: 18px;
+  margin-left: 22%;
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.right-section {
+  flex: 1;
+  margin-left: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+mat-card {
+  width: 80%;
+  max-width: 400px;
+}
+
+.circle-background {
+  position: absolute;
+  width: 1400px;
+  height: 1500px;
+  background-color: #134074;
+  border-radius: 50%;
+  top: 50%;
+  left: 10%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+.text-container {
+  position: relative;
+  z-index: 1;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.register-button{
+  color: #13407487 !important;
+}

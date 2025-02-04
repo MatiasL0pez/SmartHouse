@@ -1,0 +1,25 @@
+<div class="add-homedevice-room-container">
+  <mat-card class="dialog-card">
+    <mat-toolbar color="primary">Associate Home Device to Room</mat-toolbar>
+    <br />
+    <form [formGroup]="form" (ngSubmit)="addHomeDeviceRoom()">
+      <mat-form-field appearance="fill">
+        <mat-label>Home Device</mat-label>
+        <mat-select formControlName="homeDevice">
+          <mat-option
+            *ngFor="let device of homeDevices"
+            [value]="device.hardwareId"
+          >
+            {{ device.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="button">
+        <button type="submit" mat-raised-button class="primary-button">
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

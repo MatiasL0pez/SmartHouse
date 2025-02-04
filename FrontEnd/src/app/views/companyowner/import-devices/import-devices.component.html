@@ -1,0 +1,28 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+<div>
+  <mat-card>
+    <mat-toolbar color="primary">Import</mat-toolbar>
+    <form [formGroup]="form" (ngSubmit)="import()">
+      <mat-form-field>
+        <mat-label>File Names</mat-label>
+        <input matInput type="text" formControlName="fileToUpload">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Importer Type</mat-label>
+        <mat-select formControlName="selectedImporterType">
+          <mat-option *ngFor="let importerType of importerTypes" [value]="importerType">
+            {{ importerType }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="button">
+        <button type="submit" mat-button class="primary-button add" [disabled]="form.invalid">
+          Import
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

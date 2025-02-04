@@ -1,0 +1,16 @@
+<div class="add-role-container">
+      <mat-card>
+        <mat-toolbar color="primary">Change to HomeOwner</mat-toolbar>
+        <br>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <mat-form-field>
+            <mat-label>Profile Photo</mat-label>
+            <input matInput type="text" formControlName="profilePhoto" />
+          </mat-form-field>
+            <div class="button">
+                <button type="submit" mat-raised-button class="primary-button">Submit</button>
+              </div>
+          </form> 
+      </mat-card>
+  </div>
+  

@@ -1,0 +1,45 @@
+<div class="register-container centered-register">
+  <div class="left-section">
+    <div class="circle-background"></div>
+    <div class="text-container">
+      <h1>SmartHome</h1>
+      <p>Making your home smarter, one device at a time.</p>
+    </div>
+  </div>
+  <div class="right-section">
+    <mat-card>
+      <mat-toolbar color="primary">Register</mat-toolbar>
+      <form [formGroup]="form" (ngSubmit)="register()">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Surname</mat-label>
+          <input matInput type="text" formControlName="surname">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Profile Photo URL</mat-label>
+          <input matInput type="text" formControlName="profilePhoto"/>
+        </mat-form-field>
+
+        <div class="button-group">
+          <button type="button" mat-button (click)="goToLogin()" class="login-button">Back to login</button>
+          <button type="submit" mat-button>Register</button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>

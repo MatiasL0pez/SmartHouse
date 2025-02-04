@@ -1,0 +1,23 @@
+<div class="dialog-container">
+  <h2 class="dialog-title">{{ data.deviceName }}</h2>
+
+  <ng-container *ngIf="data.photos?.length! > 0; else noPhotos">
+    <div class="carousel-container">
+      <button mat-icon-button (click)="prevImage()" [disabled]="currentIndex === 0">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+
+      <mat-card class="carousel-card">
+        <img mat-card-image [src]="data.photos[currentIndex]" alt="Imagen no encontrada">
+      </mat-card>
+
+      <button mat-icon-button (click)="nextImage()" [disabled]="currentIndex === data.photos.length - 1">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-template #noPhotos>
+    <p>No photos available.</p>
+  </ng-template>
+</div>

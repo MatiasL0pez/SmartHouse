@@ -1,0 +1,62 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+<div class="table-container">
+    <div class="title-filter-container">
+        <h2 class="title">Users</h2>
+        <div class="filter-button-container">
+            <button *ngIf="isDataLoaded" class="button" mat-raised-button (click)="openCreateUserDialog()">New User</button>
+            <app-filter (filter)="onFilterChange($event)"></app-filter>
+        </div>
+    </div>
+  <table mat-table [dataSource]="tableData" class="mat-elevation-z3 rounded-table">
+      <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="custom-header-cell"> Name </th>
+          <td mat-cell *matCellDef="let element" class="custom-cell"> {{ element.name }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="surname">
+          <th mat-header-cell *matHeaderCellDef class="custom-header-cell"> Surname </th>
+          <td mat-cell *matCellDef="let element" class="custom-cell"> {{ element.surname }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="completeName">
+          <th mat-header-cell *matHeaderCellDef class="custom-header-cell"> Complete Name </th>
+          <td mat-cell *matCellDef="let element" class="custom-cell"> {{ element.completeName }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="roles">
+          <th mat-header-cell *matHeaderCellDef class="custom-header-cell"> Roles </th>
+          <td mat-cell *matCellDef="let element" class="custom-cell"> {{ element.roles }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="creationDate">
+          <th mat-header-cell *matHeaderCellDef class="custom-header-cell"> Creation Date </th>
+          <td mat-cell *matCellDef="let element" class="custom-cell"> {{ element.creationDate | date:'dd/MM/yyyy' }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="custom-header-cell narrow-column"></th>
+        <td mat-cell *matCellDef="let element" class="custom-cell narrow-column">
+          <span matTooltip="Only administrators can be deleted" [matTooltipDisabled]="isAdmin(element.roles)">
+            <button mat-icon-button 
+                    (click)="onDelete(element.email)" 
+                    [disabled]="!isAdmin(element.roles)">
+                <mat-icon>delete_outline</mat-icon>
+            </button>
+          </span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div *ngIf="tableData && tableData.length > 0" class="paginator-container">
+      <app-paginator
+          [currentPage]="currentPage"
+          [totalPages]="totalPages"
+          [totalResults]="totalResults"
+          [resultsPerPage]="resultsPerPage"
+          (pageChange)="onPageChange($event)">
+      </app-paginator>
+  </div>
+</div>

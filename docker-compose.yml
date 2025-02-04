@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+   webapi:
+      image: mcr.microsoft.com/dotnet/aspnet:8.0
+      container_name: webapi
+      volumes:
+         - .:/app
+      working_dir: /app
+      ports:
+         - "5000:8080"
+      environment:
+         - ConnectionStrings__DefaultConnection=Server=db;Database=SmartHome;User Id=sa;Password=YourPassword!;Encrypt=True;TrustServerCertificate=True;
+      depends_on:
+         - db
+      command: ["dotnet", "WebApi.dll"]
+
+   db:
+      image: mcr.microsoft.com/azure-sql-edge
+      container_name: sqlserver
+      environment:
+         - ACCEPT_EULA=Y
+         - SA_PASSWORD=YourPassword!
+      ports:
+         - "1433:1433"
+      volumes:
+         - sql_data:/var/opt/mssql
+
+volumes:
+   sql_data:

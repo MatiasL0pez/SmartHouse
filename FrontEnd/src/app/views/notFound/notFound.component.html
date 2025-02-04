@@ -1,0 +1,23 @@
+<div class="not-found-container">
+  <div class="left-section">
+    <div class="circle-background"></div>
+    <div class="text-container">
+      <h1>SmartHome</h1>
+      <p>Making your home smarter, one device at a time.</p>
+    </div>
+  </div>
+  <div class="right-section">
+    <mat-card>
+      <mat-toolbar color="primary">Error</mat-toolbar>
+      <div class="message-container">
+        <h2>{{ message }}</h2>
+        <p>Please check the URL or contact the administrator if you believe you should have access.</p>
+        <br>
+          <button mat-button class="primary-button" (click)="onLogout()">           
+            <mat-icon>account_circle</mat-icon>
+             Logout
+          </button>
+      </div>
+    </mat-card>
+  </div>
+</div>

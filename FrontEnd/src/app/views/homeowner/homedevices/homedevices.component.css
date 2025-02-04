@@ -1,0 +1,152 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #ceced264;
+  padding: 16px;
+}
+
+.home-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: auto;
+  margin-left: 2%;
+}
+
+.home-card {
+  cursor: pointer;
+  width: 80%;
+  max-width: 300px;
+  margin: 8px 0;
+  transition: background-color 0.3s ease;
+}
+
+.home-card:hover {
+  background-color: #f5f5f5;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 95%;
+  margin: 16px 0;
+}
+
+.custom-header-cell {
+  font-weight: bold;
+}
+
+.device-photo {
+  max-width: 60px;
+  max-height: 60px;
+  border-radius: 4px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 10px 0;
+  color: #333;
+}
+
+.rooms-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.add-device-button {
+  align-self: flex-end;
+  font-size: 16px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.add-room-button {
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.empty-message-cell {
+  text-align: center;
+  color: #a9a9a9;
+  font-style: italic;
+}
+
+.paginator-container {
+  align-self: flex-end;
+}
+
+.add-button-cell {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.mat-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home-card-list {
+  cursor: pointer;
+  width: 80%;
+  max-width: 300px;
+  margin: 15px 0;
+  transition: background-color 0.3s ease;
+}
+
+.mat-card-title button {
+  padding: 0;
+  margin-left: 8px;
+}
+
+.home-details h3 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.small-button {
+  width: 24px; /* Ajusta el ancho */
+  height: 24px; /* Ajusta el alto */
+}
+
+.edit-name-button mat-icon {
+  font-size: 16px; /* Tamaño del ícono si deseas hacerlo más pequeño */
+}
+
+.no-homes-card {
+  margin-bottom: 20px;
+}
+
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.home-header h2 {
+  margin: 0;
+}
+.add-home-button {
+  margin-left: 195px;
+}
+.add-device-button {
+  font-size: 16px;
+  padding: 10px 20px;
+}
+.devices-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 10px;
+}

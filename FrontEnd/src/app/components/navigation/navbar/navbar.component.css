@@ -1,0 +1,45 @@
+.spacer2 {
+  flex: 1 1 auto;
+}
+
+.spacer {
+  flex: 0.01 0.5 auto;
+}
+
+.custom-toolbar {
+  background-color: #13315C !important; 
+  color: hsl(0, 0%, 100%); 
+}
+
+.custom-toolbar a,
+.custom-toolbar button,
+.custom-toolbar mat-icon {
+  color: #ffffff;
+}
+
+.icon-spacing {
+  margin: 5px;
+}
+
+.user-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.user-container img, .user-container mat-icon {
+  margin-right: 10px;
+}
+
+.custom-toolbar button {
+  color: #ffffff;
+}
