@@ -4,7 +4,7 @@
 3.  http://localhost:4200/
 
 ## test data
-John	Doe	companyowner@example.com	Password123!
-Jane	Doe	companyowner2@example.com	Password123!
-Jane	Smith	administrator@example.com	Password123!
-John	Smith	homeowner@example.com	Password123!
+John	Doe	companyowner@example.com	Password123! </br>
+Jane	Doe	companyowner2@example.com	Password123! </br>
+Jane	Smith	administrator@example.com	Password123! </br>
+John	Smith	homeowner@example.com	Password123! </br>
